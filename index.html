@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Patrick Roche: Home</title>
+
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
+        <script type="application/javascript" src="scripts/common.js"></script>
+        <script type="applicatoin/javascript">
+            let app;
+            function Init() {
+                InitNavigation();
+                OnResize();
+
+                window.addEventListener('resize', OnResize);
+
+                app = new Vue({
+                    el: '#content',
+                    data: {
+                        latest: {}
+                    }
+                });
+
+                GetJSON('data/latest.json').then((data) => {
+                    for (let i = 0; i < data.news.length; i++) {
+                        if (data.news[i].hasOwnProperty('link')) {
+                            data.news[i].html = '<span class="underline">' + data.news[i].date + '</span>: ' + data.news[i].text.replace(/%%(.+)%%/, '<a href="' + data.news[i].link + '" target="_blank">$1</a>')
+                        }
+                        else {
+                            data.news[i].html = '<span class="underline">' + data.news[i].date + '</span>: ' + data.news[i].text;
+                        }
+                    }
+                    app.latest = data;
+                });
+            }
+
+            function OnResize() {
+                let nav_height = document.getElementById('navigation').offsetHeight;
+                let aboutme_height = document.getElementById('aboutme').offsetHeight;
+                let remaining_height = window.innerHeight - nav_height - aboutme_height;
+                document.getElementById('mainlist').style.height = (remaining_height - 96) + 'px';
+            }
+        </script>
+    </head>
+
+    <body onload="Init()">
+        <!-- START: NAVIGATION -->
+        <div id="navigation">
+            <div id="menu-open" class="menu">
+                <img class="menu-icon" src="images/menu.png" alt="menu open icon" />
+            </div>
+            <div id="info">
+                <p class="info-text"><span class="bold">Patrick Roche, BSEE (May 2022) | University of St. Thomas | roch6385@stthomas.edu | patrickrochemn@gmail.com </span></p>
+            </div>
+
+            <div id="overlay"></div>
+
+            <div id="menu-items">
+                <div class="menu-heading">
+                    <div id="menu-close" class="menu">
+                        <img class="menu-icon" src="images/close.png" alt="menu close icon" />
+                    </div>
+                    <p class="menu-heading-text">Navigation</p>
+                </div>
+
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="index.html" class="pure-menu-link menu-link">Home</a></li>
+                    <li class="pure-menu-item"><a href="projects.html" class="pure-menu-link menu-link">Projects</a></li>
+                    <li class="pure-menu-item"><a href="publications.html" class="pure-menu-link menu-link">Publications</a></li>
+                    <li class="pure-menu-item"><a href="awards.html" class="pure-menu-link menu-link">Awards</a></li>
+                    <li class="pure-menu-item"><a href="resume.html" class="pure-menu-link menu-link">Resume</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="nav-spacer"></div>
+        <!-- END: NAVIGATION -->
+
+        <!-- START: MAIN CONTENT -->
+        <div id="content">
+            <div id="aboutme" class="pure-g">
+                <div class="pure-u-1-3 pure-u-md-1-4 pure-u-lg-1-6 1-box">
+                    <img src="images/home/cover_photo_02.jpg" alt="cover photo" style="width: 100%; height: auto;" />
+                </div>
+                <div class="pure-u-2-3 pure-u-md-3-4 pure-u-lg-5-6 1-box">
+                    <h2>About</h2>
+                    <p>As a student at the <a href="http://www.stthomas.edu/">University of St. Thomas</a> I majored in Electrical Engineering and minored in Computer and Information Sciences and Physics</p>
+                    <p>I worked as a student researcher for the <a href="https://www.playfullearninglab.org">Playful Learning Lab</a> UST where I led the <a href="https://www.playfullearninglab.org/circus-science">Circus Science</a> project and was a main contributor to the <a href="https://www.playfullearninglab.org/art-in-space">Art In Space</a> and <a href="https://www.playfullearninglab.org/art-together-now">Art Together Now</a> projects.</p>
+                    <p>I work as a professional magician - performing as well as consulting for other magicians. I am an assistant Gracie Jiu Jitsu Instructor at <a href="https://excelmartialarts.us">Excel Martial Arts</a> in Woodbury, MN working towards my instructor certification.</p>
+                </div>
+            </div>
+            <div class="pure-g">
+                <div class="pure-u-1 1-box">
+                    <h2>Latest</h2>
+                    <div id="mainlist-container">
+                        <ul id="mainlist">
+                            <li class="pure-g" v-for="'item in latest.news">
+                                <img class="pure-u-4-24 no-stretch" :src="item.image" alt="news item cover image" />
+                                <div class="pure-u-1-24"></div>
+                                <p class="pure-u-19-24" v-html="item.html"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END: MAIN CONTENT -->
+    </body>
+</html>
