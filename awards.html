@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Patrick Roche: Awards</title>
+    <title>Patrick Roche: Awards</title>
 
 <!-- Pure.css -->
 <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
@@ -13,38 +13,34 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <!-- Custom JavaScript -->
 <script type="application/javascript" src="scripts/common.js"></script>
-<script type="application/javascript" src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.2.228/build/pdf.min.js"></script>
 <script type="application/javascript">
     let app;
     function Init() {
         InitNavigation();
-        OnResize();
 
-        window.addEventListener('resize', OnResize);
+        app = new Vue({
+            el: '#content',
+            data: {
+            	awards: [],
+            	press: []
+            }
+        });
 
-    }
-
-    function OnResize() {
-        let nav_height = document.getElementById('navigation').offsetHeight;
-        let remaining_height = window.innerHeight - nav_height;
-        document.getElementById('mainlist').style.height = (remaining_height - 96)+ 'px';
+        GetJSON('data/awards.json').then((data) => {
+            app.awards = data.awards;
+        });
     }
 </script>
 </head>
 
 <body onload="Init()">
-    <div class="awards-content">
-        <h1>Awards</h1>
-        <p>This page is still under development</p>
-    </div>
-
     <!-- START: NAVIGATION -->
     <div id="navigation">
         <div id="menu-open" class="menu">
             <img class="menu-icon" src="images/menu.png" alt="menu open icon" />
         </div>
         <div id="info">
-            <p class="info-text"><span class="bold">Patrick Roche, BSEE (May 2022) | University of St. Thomas | roch6385@stthomas.edu | patrickrochemn@gmail.com </span></p>
+            <p class="info-text"><span class="bold">Patrick Roche, Electrical Engineer</span> | University of St. Thomas | patrickrochemn@gmail.com</p>
         </div>
 
         <div id="overlay"></div>
@@ -70,11 +66,27 @@
     <!-- END: NAVIGATION -->
 
     <!-- START: MAIN CONTENT -->
-    <div id="content">
-        <div class="pure-g">
-            <div class="pure-u-1 l-box">
-                <div id="mainlist-container">
-                    <div id="cv-scroll"></div>
+    <div id="content" class="pure-g">
+        <div class="pure-u-1-1 l-box">
+            <h2>Awards</h2>
+            <div class="pure-g">
+                <div class="pure-u-1-1" v-for="item in awards">
+                    <h3 class="bold"><span v-html="item.name"></span> ({{ item.date }})</h3>
+                    <div class="pure-g">
+                        <img class="pure-u-8-24 no-stretch" v-if="item.hasOwnProperty('image')" :src="item.image" alt="award item image" />
+                        <iframe class="pure-u-8-24 no-stretch" v-if="item.hasOwnProperty('video') && item.video.type === 'youtube'" frameborder="0" allowfullscreen :src="item.video.url"></iframe>
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-15-24">
+                            <h3 style="text-align: justify;" v-html="item.title"></h3>
+                            <blockquote>
+                                <p v-for="cap in item.caption" v-html="cap"></p>
+                            </blockquote>
+                            <p v-if="item.hasOwnProperty('link')"><a :href="item.link" target="_blank">{{ item.link }}</a></p>
+                        </div>
+                        <div class="pure-u-1-1">
+                            <div class="vertical-dspacer"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

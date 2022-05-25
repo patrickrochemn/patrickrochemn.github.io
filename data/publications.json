@@ -1,0 +1,28 @@
+{
+    "conferences": [
+        {
+            "title": "Art In Space: Using Art to Interest K-12 Students in Aerospace Design",
+            "year": "2020",
+            "authors": "Maria Backlund, MiKyla Jean Harjamaki, Hannah French, Patrick Roche, Collin John Goldbach, Cullen Charles Kittams, Molly Roche, Deborah Besser, Damian Kulash Jr., Jeff Jalkio, AnnMarie Thomas",
+            "doi": "https://doi.org/10.18260/1-2--34165"
+        },
+        {
+            "title": "Circus Science: Designing Responsive Flying Trapeze Performance Costumes",
+            "year": "2020",
+            "authors": "Patrick Roche, Collin J. Goldbach, Alix Putman, Jeffrey A. Jalkio, Katie Kimball, AnnMarie P. Thomas",
+            "venue": "In Proceedings of the 2020 ACM TEI Fourteenth International Conference on Tangible, Embedded, and Embodied Interaction",
+            "doi": "https://doi.org/10.1145/3374920.3374986"
+        }
+    ],
+    "posters": [
+        {
+            "title": "Circus Science",
+            "year": "2019",
+            "authors": "Patrick Roche, Collin Goldbach, Dr. AnnMarie Thomas",
+            "venue": "University of St. Thomas Undergraduate Research Symposium"
+        }
+    ],
+    "other": [
+
+    ]
+}
