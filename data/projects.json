@@ -24,6 +24,20 @@
         ],
         "personal": [
             {
+                "dates": "2023",
+                "title": "Custom DnD Game Table with Virtual Battle Maps and LED Animations",
+                "description": [
+                    "Designed and built a custom DnD gaming table with an integrated TV for displaying virtual battle maps and addressable RGB LED animations.",
+                    "Implemented dynamic ambient animations on LED strips to enhance the game's atmosphere during exploration and storytelling phases.",
+                    "During combat, LED strips transitioned to display health bars for players, dynamically adjusting length and color based on data pulled from their DnDBeyond character sheets.",
+                    "Health bars updated in real-time to reflect players' HP and active conditions (e.g., poisoned, stunned).",
+                    "Developed a custom Java-based GUI for managing animations and transitions between ambiance modes and health bar functionality.",
+                    "Controlled LED animations with Arduino microcontrollers and FastLED library, enabling smooth, customizable lighting effects.",
+                    "Synchronized player data with DnDBeyond using a Python script to fetch and parse API data in real time.",
+                    "Technologies Used: Java, Python, Arduino, FastLED library, DnDBeyond API."
+                ]
+            },            
+            {
                 "dates": "2024",
                 "title": "Harry Potter Smart Home Wand",
                 "description": [
