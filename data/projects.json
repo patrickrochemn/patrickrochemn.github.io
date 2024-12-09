@@ -8,7 +8,7 @@
                     "Developed database synchronization microservice optimized for synchronizing deployments connected by intermittent, low-bandwidth network connections.",
                     "Service is designed to withstand network interruptions and resume synchronization when the connection is re-established ensuring at-least-once delivery.",
                     "Integrated with cross-functional, multi-company teams to deliver a scalable, reliable solution.",
-                    "Technologies Used: Java, Kafka, Docker, Kubernetes, K3S, Helm, Jenkins, Git, JIra, Confluence"
+                    "Technologies Used: Java, Kafka, Docker, Kubernetes, K3S, Helm, Jenkins, Git, Jira, Confluence"
                 ]
             },
             {
