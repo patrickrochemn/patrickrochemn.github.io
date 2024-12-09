@@ -1,7 +1,37 @@
 {
-    "projects": [
-        {
-            
-        }
-    ]
+    "projects": {
+        "professional": [
+            {
+                "dates": "August 2022 - Present",
+                "title": "Database Synchronization Service",
+                "description": [
+                    "Developed database synchronization microservice optimized for synchronizing deployments connected by intermittent, low-bandwidth network connections.",
+                    "Service is designed to withstand network interruptions and resume synchronization when the connection is re-established ensuring at-least-once delivery.",
+                    "Integrated with cross-functional, multi-company teams to deliver a scalable, reliable solution.",
+                    "Technologies Used: Java, Kafka, Docker, Kubernetes, K3S, Helm, Jenkins, Git, JIra, Confluence"
+                ]
+            },
+            {
+                "dates": "March 2024 - Present",
+                "title": "AR/XR Training Remote Instruction System",
+                "description": [
+                    "Developed a HoloLens 2-based system to enhance medical training by enabling remote instructor feedback.",
+                    "Improved the open-source HL2SS sensor streaming system to support real-time, low-latency interactions.",
+                    "Integrated an instructor application allowing remote instructors to observe student perspectives and provide visual feedback using holograms and data displays.",
+                    "Technologies Used: Unity, MRTK, RTSP, C#, Python, Websockets."
+                ]
+            }
+        ],
+        "personal": [
+            {
+                "dates": "2024",
+                "title": "Harry Potter Smart Home Wand",
+                "description": [
+                    "Designed and built a Harry Potter-inspired smart home wand using Raspberry Pi and Arduino.",
+                    "Implemented a gesture recognition system enabling users to control lights, temperature, and other devices with wand movements.",
+                    "Technologies Used: Python, C++, Raspberry Pi, Arduino."
+                ]
+            }
+        ]
+    }
 }

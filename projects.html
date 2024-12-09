@@ -75,19 +75,40 @@
     <!-- START: MAIN CONTENT -->
     <div id="content" class="pure-g">
         <div class="pure-u-1-1 l-box">
-            <h2>Research</h2>
+            <h2>Professional Projects</h2>
             <div id="mainlist-container">
                 <ul id="mainlist">
-                    <li class="pure-g" v-for="item in research.research">
+                    <li class="pure-g" v-for="item in projects.professional">
                         <div class="pure-u-1-1">
                             <h3>{{ item.dates }}</h3>
                             <h3>
-                                <a v-if="item.hasOwnProperty('link')" :href="item.link" v-html="item.title"></a>
-                                <span v-else class="link-highlight" v-html="item.title"></span>
+                                <a v-if="item.link" :href="item.link" v-html="item.title" target="_blank"></a>
+                                <span v-else v-html="item.title"></span>
                             </h3>
                         </div>
-                        <div class="vertical-spacer"></div>
-                        <img class="pure-u-6-24 no-stretch" :src="item.image" alt="research item image" />
+                        <img class="pure-u-6-24 no-stretch" :src="item.image" alt="Project Image">
+                        <div class="pure-u-1-24"></div>
+                        <div class="pure-u-17-24">
+                            <p v-for="line in item.description" v-html="line"></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="pure-u-1-1 l-box">
+            <h2>Personal Projects</h2>
+            <div id="mainlist-container">
+                <ul id="mainlist">
+                    <li class="pure-g" v-for="item in projects.personal">
+                        <div class="pure-u-1-1">
+                            <h3>{{ item.dates }}</h3>
+                            <h3>
+                                <a v-if="item.link" :href="item.link" v-html="item.title" target="_blank"></a>
+                                <span v-else v-html="item.title"></span>
+                            </h3>
+                        </div>
+                        <img class="pure-u-6-24 no-stretch" :src="item.image" alt="Project Image">
                         <div class="pure-u-1-24"></div>
                         <div class="pure-u-17-24">
                             <p v-for="line in item.description" v-html="line"></p>
