@@ -35,8 +35,6 @@
 
     function OnResize() {
         let nav_height = document.getElementById('navigation').offsetHeight;
-        let remaining_height = window.innerHeight - nav_height;
-        document.getElementById('mainlist').style.height = (remaining_height - 96)+ 'px';
     }
 </script>
 </head>
@@ -107,7 +105,6 @@
                                 <span v-else v-html="item.title"></span>
                             </h3>
                         </div>
-                        <img class="pure-u-6-24 no-stretch" :src="item.image" alt="Project Image">
                         <div class="pure-u-1-24"></div>
                         <div class="pure-u-17-24">
                             <p v-for="line in item.description" v-html="line"></p>
